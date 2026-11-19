@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SEDAPAL · Análisis Financiero 2024–2025</title>
+<style>
+:root{--bg:#f4f7fb;--cd:#fff;--tx:#14233a;--mut:#5d6b82;--mut2:#b7c2d3;--bd:#dde5f0;--ac:#1479d6;--ac2:#0fb5a6;--ok:#14a05a;--mid:#e8a30c;--bad:#dc3b3b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1624;--cd:#162338;--tx:#e8eef8;--mut:#9aabc4;--mut2:#4b5d78;--bd:#263752;--ac:#4aa3f5;--ac2:#2fd1c1}}
+:root[data-theme="dark"]{--bg:#0d1624;--cd:#162338;--tx:#e8eef8;--mut:#9aabc4;--mut2:#4b5d78;--bd:#263752;--ac:#4aa3f5;--ac2:#2fd1c1}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(120deg,#0b4f9c,#0fb5a6);color:#fff;padding:16px 18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+header h1{margin:0;font-size:1.15rem;flex:1}header small{opacity:.85;display:block;font-weight:400}
+button,.tab{font:inherit;cursor:pointer}
+.hb{background:#ffffff26;border:1px solid #ffffff55;color:#fff;border-radius:8px;padding:6px 10px}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px 14px;background:var(--cd);border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.tab{border:1px solid var(--bd);background:transparent;color:var(--tx);padding:7px 13px;border-radius:99px;white-space:nowrap}
+.tab.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+main{max-width:1180px;margin:0 auto;padding:16px}
+h2{margin:6px 0 4px}p.lead{color:var(--mut);margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.grid.w{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:14px;box-shadow:0 2px 8px #0000000d}
+.ct{font-weight:600;display:flex;justify-content:space-between;gap:6px;align-items:flex-start}
+.big{font-size:1.7rem;font-weight:700;color:var(--ac);margin:4px 0}
+.sub{color:var(--mut);font-size:.85rem}.up{color:var(--ok)}.dn{color:var(--bad)}
+.badge{font-size:.72rem;padding:2px 8px;border-radius:99px;color:#fff;white-space:nowrap}
+.ok{background:var(--ok)}.mid{background:var(--mid)}.bad{background:var(--bad)}
+.simple{background:color-mix(in srgb,var(--ac) 10%,transparent);border-left:4px solid var(--ac);padding:8px 10px;border-radius:6px;margin:8px 0;font-size:.92rem}
+details>summary{cursor:pointer;color:var(--ac);font-size:.85rem;margin-top:6px}details p{margin:6px 0;font-size:.88rem}
+.fm{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;background:var(--bg);padding:6px 8px;border-radius:6px;overflow-x:auto}
+.kpi .big{font-size:1.4rem}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.chain div{background:var(--cd);border:2px solid var(--ac);border-radius:12px;padding:8px 14px;text-align:center}
+.chain b{display:block;font-size:1.25rem;color:var(--ac)}.chain span.op{font-size:1.5rem;color:var(--mut)}
+.hv{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--cd);margin-bottom:14px}
+.hv summary,.hh{display:grid;grid-template-columns:2.2fr 1fr .8fr 1fr .8fr .8fr;gap:6px;padding:9px 12px;align-items:center;margin:0;color:var(--tx);font-size:.85rem}
+.hv summary{border-top:1px solid var(--bd)}.hv summary:hover{background:var(--bg)}
+.hh{background:var(--ac);color:#fff;font-weight:600}.hv .t summary{font-weight:700;background:var(--bg)}
+.hv .bd{padding:8px 14px 12px;background:var(--bg);font-size:.88rem}.num{text-align:right}
+.hvs{overflow-x:auto}.hvs>*{min-width:640px}
+.ch svg{width:100%;height:auto}.ch h4{margin:0 0 4px}
+.inp{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;align-items:center;padding:3px 0;font-size:.85rem}
+.inp input{width:100%;padding:5px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx);text-align:right}
+.alert{border:1px solid var(--mid);background:color-mix(in srgb,var(--mid) 14%,transparent);padding:10px 12px;border-radius:10px;margin:10px 0;font-size:.88rem}
+.ctl{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.sl{display:grid;grid-template-columns:130px 1fr 90px;gap:8px;align-items:center;margin:6px 0}
+.legend span{margin-right:12px;font-size:.8rem;color:var(--mut)}
+.bar{display:flex;height:26px;border-radius:8px;overflow:hidden;margin:6px 0}.bar i{display:block;color:#fff;font:600 .72rem/26px system-ui;text-align:center;font-style:normal;overflow:hidden}
+</style></head><body>
+<header><h1>💧 SEDAPAL S.A. · Análisis Financiero 2024–2025<small>Cifras en miles de nuevos soles · todos los datos provienen del Excel y son editables</small></h1>
+<button class="hb" id="th">🌓 Tema</button><button class="hb" id="rs">↺ Restablecer Excel</button></header>
+<nav id="nav"></nav><main id="app"></main>
+<script>
+const O=[
+['AC','ef','Efectivo y equivalentes al efectivo',588965,570661],['AC','cx','Cuentas por cobrar comerciales y otras (subtotal)',481821,393523,1],['AC','cc','Cuentas por cobrar comerciales',410522,341375],['AC','oc','Otras cuentas por cobrar',31834,37862],['AC','an','Anticipos',39465,14286],['AC','inv','Inventarios',13037,14871],
+['ANC','oa','Otros activos financieros',261894,261165],['ANC','cxl','Cuentas por cobrar comerciales y otras (subtotal)',215968,224990,1],['ANC','ccl','Cuentas por cobrar comerciales',28331,31290],['ANC','ocl','Otras cuentas por cobrar',187637,193700],['ANC','ppe','Propiedades, planta y equipo',11195205,11071285],['ANC','int','Activos intangibles (sin plusvalía)',46362,42253],['ANC','onf','Otros activos no financieros',1121561,1158435],
+['PC','opf','Otros pasivos financieros',239931,307827],['PC','px','Cuentas por pagar comerciales y otras (subtotal)',618997,662891,1],['PC','cp','Cuentas por pagar comerciales',165498,218389],['PC','pr','Cuentas por pagar a entidades relacionadas',269358,269358],['PC','op','Otras cuentas por pagar',183368,174371],['PC','id','Ingresos diferidos',773,773],['PC','pb','Provisión por beneficios a empleados',110907,113633],['PC','ov','Otras provisiones',178578,185388],['PC','pi','Pasivos por impuestos a las ganancias',61468,47161],
+['PNC','lpf','Otros pasivos financieros',1954244,1943621],['PNC','lpx','Cuentas por pagar comerciales y otras (subtotal)',961876,950956,1],['PNC','lpr','Cuentas por pagar a entidades relacionadas',950469,937811],['PNC','lid','Ingresos diferidos',11407,13145],['PNC','lpb','Provisión por beneficios a empleados',14160,12253],['PNC','lov','Otras provisiones',1573036,1615562],['PNC','lpd','Pasivos por impuestos diferidos',207689,197648],['PNC','lon','Otros pasivos no financieros',1738439,1683621],
+['PAT','cap','Capital emitido',4015085,4015085],['PAT','res','Otras reservas de capital',1309422,1308577],['PAT','ra','Resultados acumulados',940981,692960],
+['ER','v','Ingresos de actividades ordinarias',867167,768095],['ER','cv','Costo de ventas',358649,385771],['ER','gv','Gastos de ventas y distribución',88926,91768],['ER','ga','Gastos de administración',76177,122768],['ER','oi','Otros ingresos operativos',80621,91407],['ER','og','Otros gastos operativos',15402,15287],['ER','if','Ingresos financieros',14397,16229],['ER','gf','Gastos financieros',53949,65485],['ER','dc','Diferencias de cambio neto (+ganancia / −pérdida)',-48405,30504],['ER','im','Gasto por impuesto',72656,71774]];
+const SEC={AC:'Activos corrientes',ANC:'Activos no corrientes',PC:'Pasivos corrientes',PNC:'Pasivos no corrientes',PAT:'Patrimonio',ER:'Estado de resultados'};
+let R,fix,pcr,DY,tab=0;
+const init=()=>{R=O.map(r=>({s:r[0],k:r[1],n:r[2],a:r[3],b:r[4],g:r[5]}));fix=false;pcr=.75;DY=360};init();
+const n0=v=>Math.round(v).toLocaleString('es-PE');
+const F={x:v=>isFinite(v)?v.toFixed(2)+' veces':'—',y:v=>isFinite(v)?v.toFixed(3)+' veces':'—',p:v=>isFinite(v)?(v*100).toFixed(1)+'%':'—',s:v=>isFinite(v)?'S/ '+n0(v)+' mil':'—',d:v=>isFinite(v)?v.toFixed(1)+' días':'—'};
+function C(y){const S=s=>R.filter(r=>r.s==s&&!(fix&&r.g)).reduce((t,r)=>t+(+r[y]||0),0),g=k=>+R.find(r=>r.k==k)[y]||0,c={};
+c.AC=S('AC');c.ANC=S('ANC');c.AT=c.AC+c.ANC;c.PC=S('PC');c.PNC=S('PNC');c.PT=c.PC+c.PNC;c.PN=S('PAT');c.PP=c.PT+c.PN;
+['ef','cc','inv','an','ppe','cp','v','cv','gv','ga','oi','og','gf','dc'].forEach(k=>c[k]=g(k));c.if_=g('if');c.im=g('im');
+c.ub=c.v-c.cv;c.uo=c.ub-c.gv-c.ga+c.oi-c.og;c.uai=c.uo+c.if_-c.gf+c.dc;c.un=c.uai-c.im;return c}
+function M(){const a=C('a'),b=C('b'),av=k=>(a[k]+b[k])/2;
+const q=(c,y)=>{const r={},v=c.v;r.liq=c.AC/c.PC;r.aci=(c.AC-c.cc-c.inv-c.an)/c.PC;r.def=c.ef/c.PC;r.ctn=c.AC-c.PC;r.ktno=c.cc+c.inv-c.cp;
+r.rin=c.cv/av('inv');r.dio=DY/r.rin;r.rcc=v*pcr/av('cc');r.dso=DY/r.rcc;r.rcp=c.cv/av('cp');r.dpo=DY/r.rcp;r.cop=r.dio+r.dso;r.cce=r.cop-r.dpo;
+r.rat=v/av('AT');r.raf=v/av('ppe');r.rac=v/av('AC');r.rkt=v/r.ktno;
+r.sol=c.AT/c.PT;r.elp=c.PNC/c.PN;r.eto=c.PT/c.AT;r.apa=c.PT/c.PN;r.cob=c.uo/c.gf;r.dlp=c.PNC/c.AT;r.afi=c.AT/c.PN;
+r.mb=c.ub/v;r.mo=c.uo/v;r.mn=c.un/v;r.roa=c.un/av('AT');r.roe=c.un/c.PN;r.rot=v/c.AT;r.rod=r.mn*r.rot;r.mul=c.AT/c.PN;r.roD=r.rod*r.mul;return Object.assign(c,r)};
+return[q(a),q(b)]}
+// definiciones: [título, fmt, fórmula(c), explicación simple(v,c), menor-es-mejor, semáforo(v), referencia Excel]
+const D={
+liq:['Liquidez general','x',c=>`Activo corriente ${n0(c.AC)} ÷ Pasivo corriente ${n0(c.PC)}`,v=>`Por cada S/ 1 que debe pagar pronto, tiene S/ ${v.toFixed(2)} en cosas que pronto serán dinero.`,0,v=>v>=1.5?['ok','Sólida']:v>=1?['mid','Ajustada']:['bad','Menor a 1'],'Rango óptimo teórico del Excel: 1.50 – 2.00'],
+aci:['Prueba ácida','x',c=>`(Act. corriente ${n0(c.AC)} − CxC ${n0(c.cc)} − Inventarios ${n0(c.inv)} − Anticipos ${n0(c.an)}) ÷ Pas. corriente ${n0(c.PC)}`,v=>`Sin contar cobranzas, almacén ni anticipos, tiene S/ ${v.toFixed(2)} por cada S/ 1 de deuda corta.`,0,null,'Fórmula del Excel: AC − CxC − Inventarios − Anticipos'],
+def:['Prueba defensiva','p',c=>`Efectivo ${n0(c.ef)} ÷ Pasivo corriente ${n0(c.PC)}`,v=>`Si hoy le exigieran todas sus deudas cortas, con la plata en caja pagaría el ${(v*100).toFixed(0)}%.`,0,v=>v>=.29?['ok','Dentro del ideal']:['mid','Bajo el ideal'],'Rango ideal teórico del Excel: 29%'],
+ctn:['Capital de trabajo neto (CTN)','s',c=>`Activo corriente ${n0(c.AC)} − Pasivo corriente ${n0(c.PC)}`,v=>v<0?`Debe a corto plazo S/ ${n0(-v)} mil más de lo que tiene a corto plazo: le falta ese “colchón”.`:`Le sobran S/ ${n0(v)} mil después de pagar sus deudas cortas.`,0,v=>v>=0?['ok','Positivo']:['bad','Negativo'],'CTN = margen de seguridad'],
+ktno:['KTNO (capital de trabajo operativo)','s',c=>`CxC ${n0(c.cc)} + Inventarios ${n0(c.inv)} − CxP comerciales ${n0(c.cp)}`,v=>`Dinero que la operación “tiene inmovilizado”: lo que cobra + almacén − lo que debe a proveedores = S/ ${n0(v)} mil.`,1,null,'KTNO según el Excel'],
+rin:['Rotación de inventarios','x',c=>`Costo de ventas ${n0(c.cv)} ÷ Inventario promedio ${n0((C('a').inv+C('b').inv)/2)}`,v=>`El almacén se vacía y se vuelve a llenar ${v.toFixed(1)} veces al año.`,0,null,''],
+dio:['Días de almacenamiento (DIO)','d',c=>`${DY} ÷ Rotación de inventarios ${c.rin.toFixed(2)}`,v=>`Un insumo pasa ${v.toFixed(0)} días guardado antes de usarse. Menos días = mejor.`,1,null,'Objetivo: minimizar días'],
+rcc:['Rotación de cuentas por cobrar','x',c=>`Ventas a crédito (${(pcr*100).toFixed(0)}%) ${n0(c.v*pcr)} ÷ CxC promedio ${n0((C('a').cc+C('b').cc)/2)}`,v=>`Las cobranzas “giran” ${v.toFixed(2)} veces al año.`,0,null,''],
+dso:['Días de cobro (DSO)','d',c=>`${DY} ÷ Rotación CxC ${c.rcc.toFixed(2)}`,v=>`Tarda ${v.toFixed(0)} días en cobrar lo que factura. Menos días = mejor.`,1,null,'Objetivo: cobrar rápido'],
+rcp:['Rotación de cuentas por pagar','x',c=>`Costo de ventas ${n0(c.cv)} ÷ CxP promedio ${n0((C('a').cp+C('b').cp)/2)}`,v=>`Las deudas con proveedores giran ${v.toFixed(2)} veces al año.`,1,null,''],
+dpo:['Días de pago (DPO)','d',c=>`${DY} ÷ Rotación CxP ${c.rcp.toFixed(2)}`,v=>`Paga a sus proveedores a los ${v.toFixed(0)} días: es financiamiento “gratis”. Más días = más caja.`,0,null,'Objetivo: maximizar días'],
+rat:['Rotación de activos totales','y',c=>`Ventas ${n0(c.v)} ÷ Activo total promedio ${n0((C('a').AT+C('b').AT)/2)}`,v=>`Por cada S/ 1 invertido en activos vendió S/ ${v.toFixed(3)}.`,0,null,''],
+raf:['Rotación de activos fijos','y',c=>`Ventas ${n0(c.v)} ÷ PPE promedio ${n0((C('a').ppe+C('b').ppe)/2)}`,v=>`Por cada S/ 1 en planta y equipo vendió S/ ${v.toFixed(3)}.`,0,null,''],
+rac:['Rotación de activos corrientes','y',c=>`Ventas ${n0(c.v)} ÷ Activo corriente promedio ${n0((C('a').AC+C('b').AC)/2)}`,v=>`Por cada S/ 1 de activo corriente vendió S/ ${v.toFixed(3)}.`,0,null,''],
+rkt:['Rotación de capital de trabajo','x',c=>`Ventas ${n0(c.v)} ÷ KTNO ${n0(c.ktno)}`,v=>`Con cada S/ 1 de capital de trabajo operativo generó S/ ${v.toFixed(2)} de ventas.`,0,null,''],
+cop:['Ciclo operativo','d',c=>`DIO ${c.dio.toFixed(1)} + DSO ${c.dso.toFixed(1)}`,v=>`Desde que compra insumos hasta que cobra pasan ${v.toFixed(0)} días.`,1,null,''],
+cce:['Ciclo de conversión de efectivo (CCE)','d',c=>`Ciclo operativo ${c.cop.toFixed(1)} − DPO ${c.dpo.toFixed(1)}`,v=>`La caja queda “atrapada” ${v.toFixed(0)} días entre pagar y cobrar. Menos días = mejor.`,1,null,'Excel: CCE = DIO + DSO − DPO'],
+sol:['Solvencia (respaldo)','x',c=>`Activo total ${n0(c.AT)} ÷ Pasivo total ${n0(c.PT)}`,v=>`Por cada S/ 1 de deuda tiene S/ ${v.toFixed(2)} de activos que la respaldan.`,0,v=>v>=1.5?['ok','Óptimo']:v>=1?['mid','Justo']:['bad','Quiebra técnica'],'Óptimo ≥ 1.50 · menor a 1.00 = quiebra técnica'],
+elp:['Endeudamiento a largo plazo','x',c=>`Pasivo no corriente ${n0(c.PNC)} ÷ Patrimonio ${n0(c.PN)}`,v=>`Las deudas de largo plazo equivalen al ${(v*100).toFixed(0)}% de lo que es de los dueños.`,1,v=>v<.5?['ok','Bajo 50%']:['mid','Sobre 50%'],'Referencia comercial del Excel: menor a 50%'],
+eto:['Endeudamiento total','p',c=>`Pasivo total ${n0(c.PT)} ÷ Activo total ${n0(c.AT)}`,v=>`De cada S/ 100 de activos, S/ ${(v*100).toFixed(0)} se financian con deuda y S/ ${(100-v*100).toFixed(0)} con capital propio.`,1,v=>v>=.4&&v<=.6?['ok','Rango ideal']:['mid','Fuera de 40–60%'],'Rango ideal del Excel: 40% – 60%'],
+apa:['Apalancamiento patrimonial','x',c=>`Pasivo total ${n0(c.PT)} ÷ Patrimonio ${n0(c.PN)}`,v=>`Por cada S/ 1 propio hay S/ ${v.toFixed(2)} de deuda con terceros.`,1,null,''],
+cob:['Cobertura de intereses','x',c=>`EBIT ${n0(c.uo)} ÷ Gastos financieros ${n0(c.gf)}`,v=>`La utilidad operativa alcanza para pagar los intereses ${v.toFixed(1)} veces.`,0,v=>v>=3?['ok','Cómoda']:['bad','Ajustada'],'Mínimo óptimo del Excel: 3.00 veces'],
+dlp:['Deuda a largo plazo / Activo','p',c=>`Pasivo no corriente ${n0(c.PNC)} ÷ Activo total ${n0(c.AT)}`,v=>`El ${(v*100).toFixed(0)}% de lo que posee la empresa está financiado a más de 1 año.`,1,null,''],
+afi:['Apalancamiento financiero','x',c=>`Activo total ${n0(c.AT)} ÷ Patrimonio ${n0(c.PN)}`,v=>`Controla S/ ${v.toFixed(2)} de activos por cada S/ 1 aportado por los dueños.`,1,null,''],
+mb:['Margen bruto','p',c=>`Utilidad bruta ${n0(c.ub)} ÷ Ventas ${n0(c.v)}`,v=>`De cada S/ 100 vendidos, S/ ${(v*100).toFixed(1)} quedan tras pagar el costo directo.`,0,null,''],
+mo:['Margen operativo','p',c=>`Utilidad operativa ${n0(c.uo)} ÷ Ventas ${n0(c.v)}`,v=>`De cada S/ 100 vendidos, S/ ${(v*100).toFixed(1)} quedan tras costos y gastos de operar.`,0,null,''],
+mn:['Margen neto','p',c=>`Utilidad neta ${n0(c.un)} ÷ Ventas ${n0(c.v)}`,v=>`De cada S/ 100 vendidos, S/ ${(v*100).toFixed(1)} son ganancia final libre.`,0,null,''],
+roa:['ROA (sobre activos)','p',c=>`Utilidad neta ${n0(c.un)} ÷ Activo total promedio ${n0((C('a').AT+C('b').AT)/2)}`,v=>`Por cada S/ 100 en activos, genera S/ ${(v*100).toFixed(2)} de ganancia.`,0,null,''],
+roe:['ROE (sobre patrimonio)','p',c=>`Utilidad neta ${n0(c.un)} ÷ Patrimonio ${n0(c.PN)}`,v=>`Por cada S/ 100 de los dueños, genera S/ ${(v*100).toFixed(2)} de ganancia.`,0,null,''],
+rot:['Paso 2 · Rotación de activos','y',c=>`Ventas ${n0(c.v)} ÷ Activo total ${n0(c.AT)}`,v=>`Por cada S/ 1 invertido en activos vendió S/ ${v.toFixed(3)} (¿qué tan “trabajados” están?).`,0,null,''],
+rod:['Paso 3 · ROA (Margen × Rotación)','p',c=>`${(c.mn*100).toFixed(2)}% × ${c.rot.toFixed(4)}`,v=>`Antes de considerar la deuda, el negocio rinde ${(v*100).toFixed(2)}% sobre sus activos.`,0,null,''],
+mul:['Paso 4 · Multiplicador (apalancamiento)','x',c=>`Activo total ${n0(c.AT)} ÷ Patrimonio ${n0(c.PN)}`,v=>`Opera S/ ${v.toFixed(2)} de activos por cada S/ 1 propio: la deuda “multiplica” el resultado.`,1,null,''],
+roD:['Paso 5 · ROE (Margen × Rotación × Multiplicador)','p',c=>`${(c.mn*100).toFixed(2)}% × ${c.rot.toFixed(4)} × ${c.mul.toFixed(3)}`,v=>`El retorno final para los dueños es ${(v*100).toFixed(2)}%.`,0,null,'']};
+D.mn1=Object.assign([],D.mn);D.mn1[0]='Paso 1 · Margen neto';
+const T=['📊 Dashboard','✏️ Datos','↔️ Horizontal y Vertical','🧩 DuPont','💼 Capital de trabajo','💧 Liquidez','⚙️ Gestión','🏦 Solvencia y Rentabilidad'];
+function card(k,A,B,key){const kk=key?'mn':k,d=key?D.mn1:D[k],v=A[kk],w=B[kk],fm=F[d[1]],dl=v-w,good=d[4]?dl<0:dl>0,sm=d[5]?d[5](v):null,dt=d[1]=='p'?(dl*100).toFixed(1)+' pp':d[1]=='s'?n0(dl):dl.toFixed(2);
+return`<div class="card"><div class="ct"><span>${d[0]}</span>${sm?`<span class="badge ${sm[0]}">${sm[1]}</span>`:''}</div><div class="big">${fm(v)}</div>
+<div class="sub">2024: ${fm(w)} · <span class="${good?'up':'dn'}">${dl>=0?'▲':'▼'} ${dt} ${good?'(mejora)':'(empeora)'}</span></div>
+<div class="simple">🧒 En simple: ${d[3](v,A)}</div><details><summary>Ver fórmula y detalle</summary><p class="fm">${d[2](A)}</p>${d[6]?`<p>📏 ${d[6]}</p>`:''}<p>2024: ${d[3](w,B)}</p></details></div>`}
+const cards=(ks,A,B)=>`<div class="grid">${ks.map(k=>card(k,A,B,k=='mn1'?1:0)).join('')}</div>`.replace(/card\(mn1/,'');
+function bars(t,lb,a,b,fm){const m=Math.max(...a.map(Math.abs),...b.map(Math.abs))||1,W=340,g=W/lb.length,sh=v=>fm==F.s?(v/1000).toFixed(0)+'M':fm==F.p?(v*100).toFixed(1)+'%':v.toFixed(1);let s=`<svg viewBox="0 0 ${W} 185"><line x1="0" x2="${W}" y1="150" y2="150" stroke="var(--bd)"/>`;
+lb.forEach((l,i)=>{[b[i],a[i]].forEach((v,j)=>{const h=Math.abs(v)/m*110,x=i*g+g*.12+j*g*.38,y=v>=0?150-h:150;s+=`<rect x="${x}" y="${y}" width="${g*.36}" height="${h}" rx="3" fill="${j?'var(--ac)':'var(--mut2)'}"><title>${l} ${j?2025:2024}: ${fm(v)}</title></rect><text x="${x+g*.18}" y="${v>=0?y-3:y+h+10}" text-anchor="middle" font-size="8.5" fill="var(--tx)">${sh(v)}</text>`});s+=`<text x="${i*g+g/2}" y="168" text-anchor="middle" font-size="9" fill="var(--mut)">${l}</text>`});
+return`<div class="card ch"><h4>${t}</h4><div class="legend"><span>▮ 2024</span><span style="color:var(--ac)">▮ 2025</span></div>${s}</svg></div>`}
+const stack=(t,it)=>{const tot=it.reduce((s,i)=>s+i[1],0)||1;return`<div class="card"><h4 style="margin:0">${t}</h4><div class="bar">${it.map(i=>`<i style="width:${i[1]/tot*100}%;background:${i[2]}" title="${i[0]}: ${F.s(i[1])}">${(i[1]/tot*100).toFixed(0)}%</i>`).join('')}</div><div class="legend">${it.map(i=>`<span style="color:${i[2]}">▮ ${i[0]}</span>`).join('')}</div></div>`};
+const kpi=(t,v,s)=>`<div class="card kpi"><div class="sub">${t}</div><div class="big">${v}</div><div class="sub">${s}</div></div>`;
+function dash(A,B){const g=(k,fm)=>`${fm(B[k])} en 2024`;return`<h2>Dashboard</h2><p class="lead">Se actualiza solo cuando cambias datos en la pestaña ✏️ Datos. Pasa el mouse/dedo sobre las barras para ver el valor.</p>
+<div class="grid">${kpi('Ingresos 2025',F.s(A.v),g('v',F.s))}${kpi('Utilidad neta 2025',F.s(A.un),g('un',F.s))}${kpi('ROE',F.p(A.roe),g('roe',F.p))}${kpi('Liquidez general',F.x(A.liq),g('liq',F.x))}${kpi('Endeudamiento total',F.p(A.eto),g('eto',F.p))}${kpi('Ciclo de conversión de efectivo',F.d(A.cce),g('cce',F.d))}</div><br>
+<div class="grid w">${bars('Resultados (S/ mil)',['Ingresos','U. bruta','U. operativa','U. neta'],[A.v,A.ub,A.uo,A.un],[B.v,B.ub,B.uo,B.un],F.s)}
+${bars('Rentabilidad',['M. bruto','M. oper.','M. neto','ROA','ROE'],[A.mb,A.mo,A.mn,A.roa,A.roe],[B.mb,B.mo,B.mn,B.roa,B.roe],F.p)}
+${bars('Liquidez (veces)',['General','Ácida','Defensiva'],[A.liq,A.aci,A.def],[B.liq,B.aci,B.def],F.x)}
+${bars('Ciclo de efectivo (días)',['DIO','DSO','DPO','CCE'],[A.dio,A.dso,A.dpo,A.cce],[B.dio,B.dso,B.dpo,B.cce],F.d)}
+${bars('Solvencia (veces)',['Respaldo','Apal. pat.','Cobertura int.'],[A.sol,A.apa,A.cob],[B.sol,B.apa,B.cob],F.x)}
+${bars('Capital de trabajo (S/ mil)',['CTN','KTNO'],[A.ctn,A.ktno],[B.ctn,B.ktno],F.s)}
+${stack('Estructura del activo 2025',[['Corriente',A.AC,'var(--ac2)'],['No corriente',A.ANC,'var(--ac)']])}${stack('¿Cómo se financia? 2025',[['Pas. corriente',A.PC,'#e8a30c'],['Pas. no corriente',A.PNC,'#dc3b3b'],['Patrimonio',A.PN,'#14a05a']])}</div>`}
+function datos(A){const sec=s=>`<div class="card"><h3 style="margin:0 0 6px">${SEC[s]}</h3><div class="inp sub"><span></span><b>2025</b><b>2024</b></div>${R.filter(r=>r.s==s).map(r=>`<div class="inp"><span>${r.n}${r.g?' ⚠️':''}</span><input type="number" data-k="${r.k}" data-y="a" value="${r.a}"><input type="number" data-k="${r.k}" data-y="b" value="${r.b}"></div>`).join('')}</div>`;
+return`<h2>Datos editables</h2><p class="lead">Cambia cualquier número y todas las pestañas se recalculan. “Restablecer Excel” vuelve a los datos originales.</p>
+<div class="ctl card"><label><input type="checkbox" id="fx" ${fix?'checked':''}> Quitar duplicidad de subtotales (⚠️)</label><label>% ventas a crédito <input type="number" id="pc" value="${pcr*100}" style="width:70px"></label><label>Días del año <input type="number" id="dy" value="${DY}" style="width:70px"></label></div>
+<div id="live"></div><div class="alert"><b>Notas sobre el Excel:</b><br>① El Excel suma las filas “subtotal” (⚠️) junto con sus componentes (ej. CxC y otras + CxC comerciales + otras), por eso su activo corriente es 1,565,644 y su pasivo corriente 1,828,878. Por defecto se respeta el Excel; activa la casilla para ver cifras sin doble conteo.<br>② En el Excel el Activo (14,622,602) no coincide con Pasivo + Patrimonio (15,505,686): se muestra abajo en vivo.<br>③ Cuatro ratios se recalculan con su fórmula coherente usando los montos del propio Excel, porque la hoja usaba bases ajenas: utilidad bruta 2024 (382,324 en vez de 385,771), DPO 2024 (costo de ventas en vez de ventas), rotaciones de activo fijo, activo corriente y capital de trabajo, y solvencia 2024 (activo total 14,355,696).</div>
+<div class="grid w">${['AC','ANC','PC','PNC','PAT','ER'].map(sec).join('')}</div>`}
+const liveHTML=A=>{const d=A.AT-A.PP;return`<div class="grid">${kpi('Total activos',F.s(A.AT),'2025')}${kpi('Pasivo + Patrimonio',F.s(A.PP),d?`<span class="dn">⚠ descuadre de ${n0(d)}</span>`:'<span class="up">✔ cuadra</span>')}${kpi('Utilidad neta',F.s(A.un),'2025')}${kpi('Liquidez general',F.x(A.liq),'2025')}${kpi('ROE',F.p(A.roe),'2025')}</div>`};
+const HINT={AC:'Recursos que se vuelven dinero en menos de un año.',ANC:'Bienes de larga duración (plantas, redes, tuberías).',PC:'Deudas que vencen en menos de un año.',PNC:'Deudas que vencen en más de un año.',PAT:'Lo que pertenece a los dueños.',ER:'Ingresos y gastos del año.'};
+function row(nm,a,b,ba,bb,bn,h,t){const av=a/ba,bv=b/bb,ah=(a-b)/Math.abs(b),df=a-b;return`<div class="${t?'t':''}"><details><summary><span>${nm}</span><span class="num">${n0(a)}</span><span class="num">${(av*100).toFixed(1)}%</span><span class="num">${n0(b)}</span><span class="num">${(bv*100).toFixed(1)}%</span><span class="num ${ah>=0?'up':'dn'}">${isFinite(ah)?(ah>=0?'▲ ':'▼ ')+(Math.abs(ah)*100).toFixed(1)+'%':'—'}</span></summary>
+<div class="bd">📊 <b>Vertical:</b> de cada S/ 100 de ${bn}, S/ ${(av*100).toFixed(1)} corresponden a “${nm}” en 2025 (en 2024 eran S/ ${(bv*100).toFixed(1)}).<br>📈 <b>Horizontal:</b> ${nm} ${df>=0?'aumentó':'disminuyó'} ${isFinite(ah)?(Math.abs(ah)*100).toFixed(1)+'%':''} (${df>=0?'+':'−'}S/ ${n0(Math.abs(df))} mil frente a 2024).<br>💡 ${h}</div></details></div>`}
+function hv(A,B){const o=[],sc=(s,tot,tn)=>{o.push(`<div class="hh" style="background:var(--mut)"><span>${SEC[s]}</span><span></span><span></span><span></span><span></span><span></span></div>`);R.filter(r=>r.s==s&&!(fix&&r.g)).forEach(r=>o.push(row(r.n,r.a,r.b,A.AT,B.AT,'activos totales',HINT[s])));if(tot)o.push(row(tn,A[tot],B[tot],A.AT,B.AT,'activos totales',HINT[s],1))};
+['AC','ANC'].forEach((s,i)=>sc(s,s,'Total '+SEC[s].toLowerCase()));o.push(row('TOTAL ACTIVOS',A.AT,B.AT,A.AT,B.AT,'activos totales','Todo lo que posee la empresa.',1));
+['PC','PNC'].forEach(s=>sc(s,s,'Total '+SEC[s].toLowerCase()));o.push(row('TOTAL PASIVOS',A.PT,B.PT,A.AT,B.AT,'activos totales','Todo lo que debe.',1));sc('PAT','PN','Total patrimonio');o.push(row('TOTAL PASIVO + PATRIMONIO',A.PP,B.PP,A.AT,B.AT,'activos totales','Debería ser igual al total de activos.',1));
+const e=[['Ingresos de actividades ordinarias','v'],['Costo de ventas','cv'],['Ganancia bruta','ub',1],['Gastos de ventas y distribución','gv'],['Gastos de administración','ga'],['Otros ingresos operativos','oi'],['Otros gastos operativos','og'],['Ganancia operativa','uo',1],['Ingresos financieros','if_'],['Gastos financieros','gf'],['Diferencias de cambio neto','dc'],['Ganancia antes de impuestos','uai',1],['Gasto por impuesto','im'],['Ganancia neta del ejercicio','un',1]];
+const er=e.map(x=>row(x[0],A[x[1]],B[x[1]],A.v,B.v,'ventas',x[2]?'Resultado parcial: lo que va quedando de cada sol vendido.':HINT.ER,x[2])).join('');
+return`<h2>Análisis Horizontal y Vertical</h2><p class="lead">👆 Haz clic en cualquier fila para desplegar la explicación. <b>Vertical (A.V.)</b> = qué porción es del total. <b>Horizontal (A.H.)</b> = cuánto cambió frente a 2024.</p>
+<h3>Estado de Situación Financiera <small class="sub">(base: total activos)</small></h3><div class="hv hvs"><div class="hh"><span>Cuenta</span><span class="num">2025</span><span class="num">A.V.</span><span class="num">2024</span><span class="num">A.V.</span><span class="num">A.H.</span></div>${o.join('')}</div>
+<h3>Estado de Resultados <small class="sub">(base: ventas)</small></h3><div class="hv hvs"><div class="hh"><span>Cuenta</span><span class="num">2025</span><span class="num">A.V.</span><span class="num">2024</span><span class="num">A.V.</span><span class="num">A.H.</span></div>${er}</div>`}
+function dup(A,B){return`<h2>Análisis DuPont</h2><p class="lead">Descompone el ROE en 3 piezas: <b>ROE = Margen × Rotación × Apalancamiento</b>.</p>
+<div class="chain"><div>Margen neto<b>${F.p(A.mn)}</b></div><span class="op">×</span><div>Rotación<b>${A.rot.toFixed(4)}</b></div><span class="op">=</span><div>ROA<b>${F.p(A.rod)}</b></div><span class="op">×</span><div>Multiplicador<b>${A.mul.toFixed(3)}</b></div><span class="op">=</span><div>ROE<b>${F.p(A.roD)}</b></div></div>
+${cards(['mn1','rot','rod','mul','roD'],A,B)}
+<h3>🎛️ Simulador: ¿qué pasa si cambian las piezas?</h3><div class="card"><div class="sl"><span>Margen neto</span><input type="range" id="sm" min="0" max="0.6" step="0.005" value="${A.mn}"><b id="vm"></b></div><div class="sl"><span>Rotación</span><input type="range" id="sr" min="0" max="0.2" step="0.001" value="${A.rot}"><b id="vr"></b></div><div class="sl"><span>Multiplicador</span><input type="range" id="sk" min="1" max="5" step="0.01" value="${A.mul}"><b id="vk"></b></div><div class="simple" id="so"></div></div>`}
+function sim(){const g=i=>+document.getElementById(i).value,m=g('sm'),r=g('sr'),k=g('sk');const e=i=>document.getElementById(i);e('vm').textContent=(m*100).toFixed(1)+'%';e('vr').textContent=r.toFixed(3);e('vk').textContent=k.toFixed(2);e('so').innerHTML=`🧒 Con estos valores el ROE sería <b>${(m*r*k*100).toFixed(2)}%</b> (ROA ${(m*r*100).toFixed(2)}%).`}
+const page=(h,l,k,A,B)=>`<h2>${h}</h2><p class="lead">${l}</p>${cards(k,A,B)}`;
+function render(){const[A,B]=M();document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('on',i==tab));
+const h=[()=>dash(A,B),()=>datos(A),()=>hv(A,B),()=>dup(A,B),()=>page('Capital de trabajo','Es el “colchón” de dinero para operar día a día.',['ctn','ktno'],A,B),()=>page('Ratios de liquidez','¿Puede pagar sus deudas de corto plazo?',['liq','aci','def','ctn'],A,B),
+()=>page('Ratios de gestión','¿Qué tan rápido cobra, paga y rota su almacén?',['rin','dio','rcc','dso','rcp','dpo','rat','raf','rac','rkt','cop','cce'],A,B),
+()=>page('Ratios de solvencia','¿Cuánto debe y qué tan sólido es su respaldo?',['sol','elp','eto','apa','cob','dlp','afi'],A,B)+page('Ratios de rentabilidad','¿Cuánto gana por cada sol vendido o invertido?',['mb','mo','mn','roa','roe'],A,B)][tab]();
+app.innerHTML=h;if(tab==1){document.getElementById('live').innerHTML=liveHTML(A)}if(tab==3){sim();['sm','sr','sk'].forEach(i=>document.getElementById(i).oninput=sim)}}
+nav.innerHTML=T.map((t,i)=>`<button class="tab" data-i="${i}">${t}</button>`).join('');
+nav.onclick=e=>{const i=e.target.dataset.i;if(i!=null){tab=+i;render();scrollTo(0,0)}};
+app.addEventListener('change',e=>{const t=e.target;if(t.dataset.k){R.find(r=>r.k==t.dataset.k)[t.dataset.y]=+t.value||0}else if(t.id=='fx')fix=t.checked;else if(t.id=='pc')pcr=(+t.value||0)/100;else if(t.id=='dy')DY=+t.value||360;else return;
+document.getElementById('live').innerHTML=liveHTML(M()[0])});
+rs.onclick=()=>{init();render()};
+th.onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme=='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=d?'light':'dark'};
+render();
+</script></body></html>
